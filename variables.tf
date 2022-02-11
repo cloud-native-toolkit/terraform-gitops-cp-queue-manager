@@ -66,6 +66,7 @@ variable "git_credentials" {
 variable "namespace" {
   type        = string
   description = "The namespace where the application should be deployed"
+  default = "telco"
 }
 
 variable "kubeseal_cert" {
@@ -78,4 +79,59 @@ variable "server_name" {
   type        = string
   description = "The name of the server"
   default     = "default"
+}
+
+variable "entitlement_key" {
+  type        = string
+  description = "The entitlement key required to access Cloud Pak images"
+  sensitive   = true
+}
+
+variable "license" {
+  type        = string
+  description = "License string for required MQ version"
+  default     = "L-RJON-C7QG3S"
+}
+
+variable "use" {
+  type        = string
+  description = "Usage for Production or Non-Production"
+  default     = "NonProduction"
+}
+
+variable "qmgrname" {
+  type        = string
+  description = "Name of queue manager to be created"
+  default     = "QM1"
+}
+
+
+variable "instancename" {
+  type        = string
+  description = "Name of instance to be created"
+  default     = "telco-cloud"
+}
+
+variable "cpulimits" {
+  type        = string
+  description = "CPU limits for the queue manager instance"
+  default     = "500m"
+}
+
+variable "cpurequests" {
+  type        = string
+  description = "CPU requests for the queue manager instance"
+  default     = "500m"
+}
+
+variable "storageclass" {
+  type        = string
+  description = "CPU requests for the queue manager instance"
+  default     = "ibmc-vpc-block-10iops-tier"
+}
+
+variable "mqversion" {
+type        = string
+description = "Version of MQ to be installed"
+default     = "9.2.4.0-r1"
 }

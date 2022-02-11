@@ -1,0 +1,7 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: {{ .Values.mqinstance.name }}
+  namespace: {{ .Values.mqinstance.namespace}}
+spec:
+  {{- toYaml .Values.mqinstance.spec | nindent 2 }}

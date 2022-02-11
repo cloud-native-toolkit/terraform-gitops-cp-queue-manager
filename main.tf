@@ -30,14 +30,14 @@ locals {
               }
             }
             availability = {
-              type = SingleInstance
+              type = "SingleInstance"
             }
             }
           }
             storage = {
               defaultClass = var.storageclass
               queueManager = {
-                type = persistent-claim
+                type = "persistent-claim"
               }
             }
             version = var.mqversion

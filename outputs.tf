@@ -1,7 +1,7 @@
 
-output "name" {
+output "instance_name" {
   description = "The name of the module"
-  value       = local.name
+  value       = local.instance_name
   depends_on  = [null_resource.setup_gitops]
 }
 
@@ -13,7 +13,7 @@ output "branch" {
 
 output "namespace" {
   description = "The namespace where the module will be deployed"
-  value       = local.namespace
+  value       = var.namespace
   depends_on  = [null_resource.setup_gitops]
 }
 
@@ -33,4 +33,8 @@ output "type" {
   description = "The type of module where the module is deployed"
   value       = local.type
   depends_on  = [null_resource.setup_gitops]
+}
+
+output "bin_dir" {
+  value = local.bin_dir
 }

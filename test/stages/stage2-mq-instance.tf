@@ -1,6 +1,10 @@
 module "mq_instance" {
   source = "./module"
 
+  depends_on = [
+    module.gitops-cp-mq
+  ]
+
   gitops_config = module.gitops.gitops_config
   git_credentials = module.gitops.git_credentials
   server_name = module.gitops.server_name

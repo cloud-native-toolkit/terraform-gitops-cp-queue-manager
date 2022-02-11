@@ -1,40 +1,18 @@
 
-output "instance_name" {
-  description = "The name of the module"
-  value       = local.instance_name
-  depends_on  = [null_resource.setup_gitops]
-}
+resource null_resource write_outputs {
+  provisioner "local-exec" {
+    command = "echo \"$${OUTPUT}\" > gitops-output.json"
 
-output "branch" {
-  description = "The branch where the module config has been placed"
-  value       = local.application_branch
-  depends_on  = [null_resource.setup_gitops]
-}
-
-output "namespace" {
-  description = "The namespace where the module will be deployed"
-  value       = var.namespace
-  depends_on  = [null_resource.setup_gitops]
-}
-
-output "server_name" {
-  description = "The server where the module will be deployed"
-  value       = var.server_name
-  depends_on  = [null_resource.setup_gitops]
-}
-
-output "layer" {
-  description = "The layer where the module is deployed"
-  value       = local.layer
-  depends_on  = [null_resource.setup_gitops]
-}
-
-output "type" {
-  description = "The type of module where the module is deployed"
-  value       = local.type
-  depends_on  = [null_resource.setup_gitops]
-}
-
-output "bin_dir" {
-  value = local.bin_dir
+    environment = {
+      OUTPUT = jsonencode({
+        name        = module.mq_instance.instance_name
+#        branch      = module.cp4d-instance.branch
+#        namespace   = module.cp4d-instance.namespace
+#        server_name = module.cp4d-instance.server_name
+#        layer       = module.cp4d-instance.layer
+#        layer_dir   = module.cp4d-instance.layer == "infrastructure" ? "1-infrastructure" : (module.cp4d-instance.layer == "services" ? "2-services" : "3-applications")
+# #       type        = module.cp4d-instance.type
+      })
+    }
+  }
 }

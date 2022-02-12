@@ -1,14 +1,15 @@
 locals {
-  base_name          = "ibm-mq-operator"
+  base_name          = "ibm-mq"
   instance_name = "${local.base_name}-instance"
   bin_dir       = module.setup_clis.bin_dir
-  instance_chart_dir = "${path.module}/charts/ibm-mq-operator-instance"
-  instance_yaml_dir     = "${path.cwd}/.tmp/${local.base_name}/chart/${local.instance_name}"
+  instance_chart_dir = "${path.module}/charts/ibm-mq-instance"
+  instance_yaml_dir     = "${path.cwd}/.tmp/${local.instance_name}/chart/${local.instance_name}"
   layer = "services"
   type  = "instances"
   application_branch = "main"
   layer_config = var.gitops_config[local.layer]
-  values_file = "values-${var.server_name}.yaml"
+ # values_file = "values-${var.server_name}.yaml"
+  values_file = "values.yaml"
 
   instance_values_content = {
     ibm-mq-operator-instance = {

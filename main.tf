@@ -23,8 +23,8 @@ locals {
         }
         queueManager = {
           name    = var.qmgrname
-          version = var.mqversion
-          web     = {
+        version = var.mqversion
+        web     = {
             enabled = true
           }
         }

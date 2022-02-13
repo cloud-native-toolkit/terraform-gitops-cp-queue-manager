@@ -10,6 +10,7 @@ BRANCH=$(jq -r '.branch // "main"' gitops-output.json)
 SERVER_NAME=$(jq -r '.server_name // "default"' gitops-output.json)
 LAYER=$(jq -r '.layer_dir // "2-services"' gitops-output.json)
 TYPE=$(jq -r '.type // "base"' gitops-output.json)
+QMGR_NAME=$(jq -r '.queue_manager // "telco-cloud"' gitops-output.json)
 
 cat gitops-output.json
 
@@ -52,8 +53,7 @@ else
   sleep 30
 fi
 
-#DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
-DEPLOYMENT="telco-cloud-ibm-mq"
+DEPLOYMENT="${QMGR_NAME}-ibm-mq"
 count=0
 until kubectl get statefulset "${DEPLOYMENT}" -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
   echo "Waiting for statefulset/${DEPLOYMENT} in ${NAMESPACE}"

@@ -22,12 +22,13 @@ locals {
           use     = var.use
         }
         queueManager = {
-          name    = var.qmgrname
+          name = var.qmgrname
+        }
         version = var.mqversion
         web     = {
             enabled = true
           }
-        }
+
       }
     }
   }

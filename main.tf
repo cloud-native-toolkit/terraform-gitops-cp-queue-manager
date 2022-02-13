@@ -12,7 +12,7 @@ locals {
   values_file = "values.yaml"
 
   instance_values_content = {
-    ibm-mq-operator-instance = {
+    ibm-mq-instance = {
       name = var.instancename
       namespace = var.namespace
       spec = {

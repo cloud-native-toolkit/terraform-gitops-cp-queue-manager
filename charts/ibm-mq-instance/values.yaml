@@ -1,6 +1,6 @@
 mqinstance:
-  name: quickstart-cp4i
-  namespace: cp4i-dev
+  name: telco-cloud
+  namespace: gitops-cp-queue-manager
   spec:
     license:
       accept: true

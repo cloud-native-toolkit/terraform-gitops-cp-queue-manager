@@ -5,6 +5,11 @@ output "instance_name" {
 #  depends_on  = [null_resource.setup_gitops]
 }
 
+output "qmgr_instancename" {
+  description = "Name of queue manager created"
+  value       = var.instancename
+}
+
 /*output "branch" {
   description = "The branch where the module config has been placed"
   value       = local.application_branch

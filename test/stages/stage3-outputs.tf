@@ -5,7 +5,8 @@ resource null_resource write_outputs {
 
     environment = {
       OUTPUT = jsonencode({
-        name        = module.mq_instance.instancename
+        name        = module.mq_instance.instance_name
+        queue_manager = module.mq_instance.qmgr_instancename
 #        branch      = module.cp4d-instance.branch
 #        namespace   = module.cp4d-instance.namespace
 #        server_name = module.cp4d-instance.server_name

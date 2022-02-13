@@ -7,12 +7,6 @@ resource null_resource write_outputs {
       OUTPUT = jsonencode({
         name        = module.mq_instance.instance_name
         queue_manager = module.mq_instance.qmgr_instancename
-#        branch      = module.cp4d-instance.branch
-#        namespace   = module.cp4d-instance.namespace
-#        server_name = module.cp4d-instance.server_name
-#        layer       = module.cp4d-instance.layer
-#        layer_dir   = module.cp4d-instance.layer == "infrastructure" ? "1-infrastructure" : (module.cp4d-instance.layer == "services" ? "2-services" : "3-applications")
-# #       type        = module.cp4d-instance.type
       })
     }
   }

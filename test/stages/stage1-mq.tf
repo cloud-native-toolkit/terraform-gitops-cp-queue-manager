@@ -6,11 +6,7 @@ module gitops-cp-mq {
   server_name = module.gitops.server_name
   #kubeseal_cert = module.gitops.sealed_secrets_cert
   catalog = module.cp_catalogs.catalog_ibmoperators
-  #platform_navigator_name = module.cp_platform_navigator.name
 
-  # not sure if the remaining at needed.
-  #license = module.cp4i-dependencies.mq.license
-  #entitlement_key = module.cp_catalogs.entitlement_key
   channel = module.cp4i-dependencies.mq.channel
   namespace = module.gitops_namespace.name
 }

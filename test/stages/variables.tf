@@ -89,3 +89,11 @@ variable "kubeseal_namespace" {
 
 variable "cp_entitlement_key" {
 }
+
+variable "qmgr_name" {
+  default = "QM2"
+}
+
+variable "qmgr_instance_name" {
+  default = "telecom-cloud"
+}

@@ -9,7 +9,7 @@ module "mq_instance" {
   git_credentials = module.gitops.git_credentials
   server_name = module.gitops.server_name
   #namespace = module.gitops_namespace.name
-  namespace = var.namespace
+  namespace = "telco-cloud"
   kubeseal_cert = module.gitops.sealed_secrets_cert
   entitlement_key = module.cp_catalogs.entitlement_key
   license = module.cp4i-dependencies.mq.license

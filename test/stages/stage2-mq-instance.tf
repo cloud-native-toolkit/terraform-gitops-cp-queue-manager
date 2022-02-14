@@ -10,10 +10,8 @@ module "mq_instance" {
   server_name = module.gitops.server_name
   namespace = module.gitops_namespace.name
   kubeseal_cert = module.gitops.sealed_secrets_cert
-  #catalog = module.cp_catalogs.catalog_ibmoperators
-
   entitlement_key = module.cp_catalogs.entitlement_key
   license = module.cp4i-dependencies.mq.license
-  #instance_version=module.cp4i-dependencies.mq.version
-  #channel = module.cp4i-dependencies.mq.channel
+  qmgr_instance_name = var.qmgr_instance_name
+  qmgr_name = var.qmgr_name
 }

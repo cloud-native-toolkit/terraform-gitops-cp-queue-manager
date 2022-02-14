@@ -45,10 +45,6 @@ versions:
         moduleRef:
           id: gitops
           output: server_name
-      - name: catalog
-        moduleRef:
-          id: catalogs
-          output: catalog_ibmoperators
       - name: kubeseal_cert
         moduleRef:
           id: gitops
@@ -61,14 +57,6 @@ versions:
         moduleRef:
           id: catalogs
           output: entitlement_key
-      - name: channel
-        moduleRef:
-          id: dep-manager
-          output: mq.channel
-      - name: instance_version
-        moduleRef:
-          id: dep-manager
-          output: mq.version
       - name: license
         moduleRef:
           id: dep-manager

@@ -53,10 +53,8 @@ module "mq_instance" {
    namespace = module.gitops_namespace.name
    kubeseal_cert = module.gitops.sealed_secrets_cert
    catalog = module.cp_catalogs.catalog_ibmoperators
-
    entitlement_key = module.cp_catalogs.entitlement_key
    license = module.cp4i-dependencies.mq.license
-   instance_version=module.cp4i-dependencies.mq.version
 }
 
 ```

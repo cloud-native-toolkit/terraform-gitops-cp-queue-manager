@@ -13,7 +13,7 @@ locals {
 
   instance_values_content = {
     mqinstance = {
-      name      = var.instancename
+      name      = var.qmgr_instance_name
       namespace = var.namespace
       spec      = {
         license = {
@@ -22,7 +22,7 @@ locals {
           use     = var.use
         }
         queueManager = {
-          name = var.qmgrname
+          name = var.qmgr_name
         }
         version = var.mqversion
         web     = {

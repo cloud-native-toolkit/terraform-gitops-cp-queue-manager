@@ -4,9 +4,9 @@ output "instance_name" {
   value       = local.instance_name
 }
 
-output "qmgr_instancename" {
+output "qmgr_instance_name" {
   description = "Name of queue manager created"
-  value       = var.instancename
+  value       = var.qmgr_instance_name
 }
 
 output "bin_dir" {

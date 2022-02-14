@@ -66,13 +66,11 @@ variable "git_credentials" {
 variable "namespace" {
   type        = string
   description = "The namespace where the application should be deployed"
-  default = "telco"
 }
 
 variable "kubeseal_cert" {
   type        = string
   description = "The certificate/public key used to encrypt the sealed secrets"
-  default     = ""
 }
 
 variable "server_name" {
@@ -99,16 +97,16 @@ variable "use" {
   default     = "NonProduction"
 }
 
-variable "qmgrname" {
+variable "qmgr_name" {
   type        = string
   description = "Name of queue manager to be created"
   default     = "QM1"
 }
 
 
-variable "instancename" {
+variable "qmgr_instance_name" {
   type        = string
-  description = "Name of instance to be created"
+  description = "Name of MQ instance to be created"
   default     = "telco-cloud"
 }
 

@@ -21,7 +21,8 @@ variable "bootstrap_prefix" {
 
 variable "namespace" {
   type        = string
-  description = "Namespace for tools"
+  description = "Namespace for installing MQ instance"
+  default     = "telco-cloud"
 }
 
 variable "cluster_name" {

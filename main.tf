@@ -31,6 +31,9 @@ locals {
 
       }
     }
+    configMap = {
+      name = var.config_map
+    }
   }
 }
   module setup_clis {

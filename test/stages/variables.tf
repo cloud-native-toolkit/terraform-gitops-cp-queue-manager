@@ -90,9 +90,15 @@ variable "cp_entitlement_key" {
 }
 
 variable "qmgr_name" {
-  default = "QM2"
+  default = "QM1"
 }
 
 variable "qmgr_instance_name" {
-  default = "telecom-cloud"
+  default = "telco-cloud"
+}
+
+variable "config_map" {
+  type        = string
+  description = "Name of config map to created"
+  default =  "oms-queue-config"
 }

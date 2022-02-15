@@ -133,3 +133,8 @@ type        = string
 description = "Version of MQ to be installed"
 default     = "9.2.4.0-r1"
 }
+
+variable "config_map" {
+  type        = string
+  description = "Name of config map to created"
+}

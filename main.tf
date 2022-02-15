@@ -10,6 +10,7 @@ locals {
   layer_config       = var.gitops_config[local.layer]
   #values_file = "values-${var.server_name}.yaml"
   values_file        = "values.yaml"
+  mqscript_file      = "config.mqsc"
 
   instance_values_content = {
     mqinstance = {
@@ -92,7 +93,7 @@ locals {
     }
 
     provisioner "local-exec" {
-      command = "${self.triggers.bin_dir}/igc gitops-module '${self.triggers.name}' -n '${self.triggers.namespace}' --contentDir '${self.triggers.yaml_dir}' --serverName '${self.triggers.server_name}' -l '${self.triggers.layer}' --type=${self.triggers.type} --valueFiles='values.yaml,${local.values_file}'"
+      command = "${self.triggers.bin_dir}/igc gitops-module '${self.triggers.name}' -n '${self.triggers.namespace}' --contentDir '${self.triggers.yaml_dir}' --serverName '${self.triggers.server_name}' -l '${self.triggers.layer}' --type=${self.triggers.type} --valueFiles='values.yaml,${local.mqscript_file},${local.values_file}'"
 
       environment = {
         GIT_CREDENTIALS = nonsensitive(self.triggers.git_credentials)

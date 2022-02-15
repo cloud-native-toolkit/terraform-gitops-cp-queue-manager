@@ -23,6 +23,16 @@ locals {
         }
         queueManager = {
           name = var.qmgr_name
+          mqsc = [
+            {
+              configMap= {
+                name= var.config_map,
+                items= [
+                  "config.mqsc"
+                ]
+              }
+            }
+          ]
         }
         version = var.mqversion
         web     = {

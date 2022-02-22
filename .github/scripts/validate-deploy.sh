@@ -64,7 +64,7 @@ count=0
 until [[ $(kubectl get queuemanager ${QMGR_NAME}  -n  ${NAMESPACE} -o jsonpath="{.status.phase}") == "Running" ||  $count -eq ${WAIT_COUNT} ]]; do
   echo "Waiting for Queue Manager/${QMGR_NAME} in ${NAMESPACE}"
   count=$((count + 1))
-  sleep 15
+  sleep 60
 done
 
 if [[ $count -eq 20 ]]; then
@@ -84,7 +84,7 @@ fi
 
 
 kubectl get all -n "${NAMESPACE}"
-kubectl rollout status "sts/${QMGR_NAME}-ibm-mq" -n "${NAMESPACE}" || exit 1
+kubectl rollout status "sts/${QMGR_NAME}-ibm-mq" -n "${NAMESPACE}"
 
 cd ..
 rm -rf .testrepo

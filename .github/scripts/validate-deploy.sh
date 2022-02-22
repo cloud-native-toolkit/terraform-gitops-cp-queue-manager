@@ -77,7 +77,7 @@ fi
 
 if [[ $(kubectl get cm ${CONFIG_MAP}  -n  ${NAMESPACE} | grep ${CONFIG_MAP} | awk '{print $1}') == ${CONFIG_MAP}  ]]; then
   echo "Config Map ${CONFIG_MAP} has been created"
-  kubectl describe cm ${CONFIG_MAP}
+  kubectl describe cm ${CONFIG_MAP} -n  ${NAMESPACE}
   else
     echo "Did not find Config Map ${CONFIG_MAP} in namespace: ${NAMESPACE}" || exit 1
 fi

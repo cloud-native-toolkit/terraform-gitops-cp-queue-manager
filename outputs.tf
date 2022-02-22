@@ -12,3 +12,7 @@ output "qmgr_instance_name" {
 output "bin_dir" {
   value = local.bin_dir
 }
+
+output "config_map" {
+  value = var.config_map
+}

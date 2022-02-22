@@ -53,21 +53,22 @@ else
   sleep 30
 fi
 
-STATEFULSET="${QMGR_NAME}-ibm-mq"
+
+WAIT_COUNT=20
 count=0
-until kubectl get statefulset "${STATEFULSET}" -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
-  echo "Waiting for statefulset/${STATEFULSET} in ${NAMESPACE}"
+until [[ $(kubectl get queuemanager ${QMGR_NAME}  -n  ${NAMESPACE} -o jsonpath="{.status.phase}") == "Running" ||  $count -eq ${WAIT_COUNT} ]]; do
+  echo "Waiting for Queue Manager/${QMGR_NAME} in ${NAMESPACE}"
   count=$((count + 1))
   sleep 15
 done
 
 if [[ $count -eq 20 ]]; then
-  echo "Timed out waiting for statefulset/${STATEFULSET} in ${NAMESPACE}"
+  echo "Timed out waiting for Queue Manager/${QMGR_NAME} in ${NAMESPACE}"
   kubectl get all -n "${NAMESPACE}"
   exit 1
 fi
 
-kubectl rollout status "statefulset/${STATEFULSET}" -n "${NAMESPACE}" || exit 1
+kubectl rollout status "sts/${QMGR_NAME}-ibm-mq" -n "${NAMESPACE}" || exit 1
 
 cd ..
 rm -rf .testrepo

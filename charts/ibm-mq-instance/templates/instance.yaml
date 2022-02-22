@@ -5,12 +5,3 @@ metadata:
   namespace: {{ .Values.mqinstance.namespace}}
 spec:
   {{- toYaml .Values.mqinstance.spec | nindent 2 }}
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ .Values.configMap.name }}
-  namespace: {{ .Values.mqinstance.namespace}}
-data:
-  config.mqsc: |-
-    {{ .Files.Get "config.mqsc" | nindent 4 }}

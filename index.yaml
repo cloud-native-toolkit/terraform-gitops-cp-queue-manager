@@ -1,0 +1,10 @@
+name: gitops-cp-queue-manager
+type: gitops
+description: >-
+  Module to populate a gitops repo with the resources to provision a Queue
+  Manager from the cloud pak
+tags:
+  - tools
+  - gitops
+versions: []
+id: github.com/cloud-native-toolkit/terraform-gitops-cp-queue-manager

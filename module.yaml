@@ -1,6 +1,6 @@
-name: gitops-cp-mq
-type: terraform
-description: Module to populate a gitops repository with the resources to provision the MQ operator from IBM Cloud Pak for Integration.
+name: gitops-cp-queue-manager
+type: gitops
+description: Module to populate a gitops repo with the resources to provision a Queue Manager from the cloud pak
 tags:
   - tools
   - gitops

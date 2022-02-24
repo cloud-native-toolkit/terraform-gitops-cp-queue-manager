@@ -10,6 +10,10 @@ BRANCH=$(jq -r '.branch // "main"' gitops-output.json)
 SERVER_NAME=$(jq -r '.server_name // "default"' gitops-output.json)
 LAYER=$(jq -r '.layer_dir // "2-services"' gitops-output.json)
 TYPE=$(jq -r '.type // "base"' gitops-output.json)
+QMGR_NAME=$(jq -r '.queue_manager // "telco-cloud"' gitops-output.json)
+CONFIG_MAP=$(jq -r '.config_map // "oms-queue-config"' gitops-output.json)
+
+cat gitops-output.json
 
 mkdir -p .testrepo
 
@@ -50,21 +54,37 @@ else
   sleep 30
 fi
 
-DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
+
+echo "Checking if Config Map has been created"
+kubectl get cm ${CONFIG_MAP}  -n  ${NAMESPACE}
+
+
+WAIT_COUNT=20
 count=0
-until kubectl get deployment "${DEPLOYMENT}" -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
-  echo "Waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
+until [[ $(kubectl get queuemanager ${QMGR_NAME}  -n  ${NAMESPACE} -o jsonpath="{.status.phase}") == "Running" ||  $count -eq ${WAIT_COUNT} ]]; do
+  echo "Waiting for Queue Manager/${QMGR_NAME} in ${NAMESPACE}"
   count=$((count + 1))
-  sleep 15
+  sleep 60
 done
 
 if [[ $count -eq 20 ]]; then
-  echo "Timed out waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
-  kubectl get all -n "${NAMESPACE}"
+  echo "Timed out waiting for Queue Manager/${QMGR_NAME} in ${NAMESPACE}"
   exit 1
+else
+  kubectl get queuemanager ${QMGR_NAME} -n  ${NAMESPACE}
+  echo "Successfully created Queue manager: ${QMGR_NAME} with config map: ${CONFIG_MAP}"
 fi
 
-kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
+if [[ $(kubectl get cm ${CONFIG_MAP}  -n  ${NAMESPACE} | grep ${CONFIG_MAP} | awk '{print $1}') == ${CONFIG_MAP}  ]]; then
+  echo "Config Map ${CONFIG_MAP} has been created"
+  kubectl describe cm ${CONFIG_MAP} -n  ${NAMESPACE}
+  else
+    echo "Did not find Config Map ${CONFIG_MAP} in namespace: ${NAMESPACE}" || exit 1
+fi
+
+
+kubectl get all -n "${NAMESPACE}"
+kubectl rollout status "sts/${QMGR_NAME}-ibm-mq" -n "${NAMESPACE}"
 
 cd ..
 rm -rf .testrepo

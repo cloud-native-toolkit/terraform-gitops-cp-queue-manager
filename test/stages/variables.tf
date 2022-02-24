@@ -21,7 +21,7 @@ variable "bootstrap_prefix" {
 
 variable "namespace" {
   type        = string
-  description = "Namespace for tools"
+  description = "Namespace for installing MQ instance"
 }
 
 variable "cluster_name" {
@@ -87,4 +87,18 @@ variable "kubeseal_namespace" {
 }
 
 variable "cp_entitlement_key" {
+}
+
+variable "qmgr_name" {
+  default = "QM1"
+}
+
+variable "qmgr_instance_name" {
+  default = "telco-cloud"
+}
+
+variable "config_map" {
+  type        = string
+  description = "Name of config map to created"
+  default =  "oms-queue-config"
 }

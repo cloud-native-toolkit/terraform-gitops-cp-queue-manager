@@ -39,22 +39,30 @@ This module makes use of the output from other modules:
 
 - GitOps - github.com/cloud-native-toolkit/terraform-tools-gitops.git
 - Namespace - github.com/cloud-native-toolkit/terraform-gitops-namespace.git
-- etc
+- MQ Operator - github.com/cloud-native-toolkit/terraform-gitops-cp-mq.git
 
 ## Example usage
 
 ```hcl-terraform
-module "dev_tools_argocd" {
-  source = "github.com/cloud-native-toolkit/terraform-tools-argocd.git"
+module "mq_instance" {
+   source = "github.com/cloud-native-toolkit/terraform-gitops-cp-queue-manager.git"
 
-  cluster_config_file = module.dev_cluster.config_file_path
-  cluster_type        = module.dev_cluster.type
-  app_namespace       = module.dev_cluster_namespaces.tools_namespace_name
-  ingress_subdomain   = module.dev_cluster.ingress_hostname
-  olm_namespace       = module.dev_software_olm.olm_namespace
-  operator_namespace  = module.dev_software_olm.target_namespace
-  name                = "argocd"
+   depends_on = [
+      module.gitops-cp-mq
+   ]
+
+   gitops_config = module.gitops.gitops_config
+   git_credentials = module.gitops.git_credentials
+   server_name = module.gitops.server_name
+   namespace = module.gitops_namespace.name
+   kubeseal_cert = module.gitops.sealed_secrets_cert
+   entitlement_key = module.cp_catalogs.entitlement_key
+   license = module.cp4i-dependencies.mq.license
+   qmgr_instance_name = var.qmgr_instance_name
+   qmgr_name = var.qmgr_name
+   config_map = var.config_map
 }
+
 ```
 
 ## Anatomy of the GitOps module repository

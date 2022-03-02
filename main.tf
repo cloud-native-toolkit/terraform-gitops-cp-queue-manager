@@ -21,6 +21,22 @@ locals {
           license = var.license
           use     = var.use
         }
+        template = {
+          pod = {
+            containers = [
+              {
+                name = "qmgr"
+                env = [
+                  {
+                    name  = "MQSNOAUT"
+                    value = "yes"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+
         queueManager = {
           name = var.qmgr_name
           mqsc = [

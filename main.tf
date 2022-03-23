@@ -19,7 +19,7 @@ locals {
         license = {
           accept  = true
           license = var.license
-          use     = var.use
+          use     = var.license_use
         }
         template = {
           pod = {
@@ -50,7 +50,7 @@ locals {
             }
           ]
         }
-        version = var.mqversion
+        version = var.mq_version
         web     = {
             enabled = true
           }

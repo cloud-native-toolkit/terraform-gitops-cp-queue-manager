@@ -91,7 +91,7 @@ variable "license" {
   default     = "L-RJON-C7QG3S"
 }
 
-variable "use" {
+variable "license_use" {
   type        = string
   description = "Usage for Production or Non-Production"
   default     = "NonProduction"
@@ -125,10 +125,10 @@ variable "cpurequests" {
 variable "storageclass" {
   type        = string
   description = "CPU requests for the queue manager instance"
-  default     = "ibmc-vpc-block-10iops-tier"
+  default     = "portworx-db2-rwo-sc"
 }
 
-variable "mqversion" {
+variable "mq_version" {
 type        = string
 description = "Version of MQ to be installed"
 default     = "9.2.4.0-r1"

@@ -57,6 +57,14 @@ versions:
         moduleRef:
           id: catalogs
           output: entitlement_key
+      - name: license_use
+        moduleRef:
+          id: dep-manager
+          output: mq.license_use
+      - name: mq_version
+        moduleRef:
+          id: dep-manager
+          output: mq.version
       - name: license
         moduleRef:
           id: dep-manager

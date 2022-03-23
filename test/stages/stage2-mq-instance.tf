@@ -11,8 +11,12 @@ module "mq_instance" {
   namespace = module.gitops_namespace.name
   kubeseal_cert = module.gitops.sealed_secrets_cert
   entitlement_key = module.cp_catalogs.entitlement_key
-  license = module.cp4i-dependencies.mq.license
   qmgr_instance_name = var.qmgr_instance_name
   qmgr_name = var.qmgr_name
   config_map = var.config_map
+
+  # Pulling variables from CP4I dependency management
+  mq_version     = module.cp4i-dependencies.mq.version
+  license     = module.cp4i-dependencies.mq.license
+  license_use = module.cp4i-dependencies.mq.license_use
 }

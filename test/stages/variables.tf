@@ -103,7 +103,7 @@ variable "config_map" {
   default =  "oms-queue-config"
 }
 
-variable "storageclass" {
+variable "storageClass" {
   type        = string
   description = "Storage class to be used for Qmgr"
   default     = "ibmc-block-bronze"

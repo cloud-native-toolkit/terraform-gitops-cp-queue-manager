@@ -16,7 +16,7 @@ module "mq_instance" {
   config_map = var.config_map
 
   # Parameter specific to mq-instance
-  storageClass="ibmc-block-bronze"
+  storageClass = "ibmc-block-bronze"
 
   # Pulling variables from CP4I dependency management
   mq_version     = module.cp4i-dependencies.mq.version

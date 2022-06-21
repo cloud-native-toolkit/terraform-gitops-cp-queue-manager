@@ -42,7 +42,7 @@ locals {
             queueManager = {
               type = "persistent-claim"
             }
-            defaultClass = var.storageclass
+            defaultClass = var.storageClass
           }
 
           name = var.qmgr_name

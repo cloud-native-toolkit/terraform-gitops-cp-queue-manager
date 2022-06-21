@@ -122,7 +122,7 @@ variable "cpurequests" {
   default     = "500m"
 }
 
-variable "storageclass" {
+variable "storageClass" {
   type        = string
   description = "Storage class to be used for Qmgr"
   default     = "ibmc-block-bronze"

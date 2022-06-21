@@ -124,8 +124,8 @@ variable "cpurequests" {
 
 variable "storageclass" {
   type        = string
-  description = "CPU requests for the queue manager instance"
-  default     = "portworx-db2-rwo-sc"
+  description = "Storage class to be used for Qmgr"
+  default     = "ibmc-block-bronze"
 }
 
 variable "mq_version" {

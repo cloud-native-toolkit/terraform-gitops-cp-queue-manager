@@ -10,7 +10,7 @@ mqinstance:
       storage:
         queueManager:
           type: persistent-claim
-        defaultClass: ibmc-block-bronze
+        defaultClass: portworx-db2-rwo-sc
       name: QM1
       mqsc:
         - configMap:

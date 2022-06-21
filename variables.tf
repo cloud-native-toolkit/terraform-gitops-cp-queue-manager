@@ -125,7 +125,7 @@ variable "cpurequests" {
 variable "storageClass" {
   type        = string
   description = "Storage class to be used for Qmgr"
-  default     = "ibmc-block-bronze"
+  default     = "portworx-db2-rwo-sc"
 }
 
 variable "mq_version" {

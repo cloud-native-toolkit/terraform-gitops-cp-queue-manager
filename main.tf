@@ -38,6 +38,13 @@ locals {
         }
 
         queueManager = {
+          storage = {
+            queueManager = {
+              type = "persistent-claim"
+            }
+            defaultClass = var.storageClass
+          }
+
           name = var.qmgr_name
           mqsc = [
             {

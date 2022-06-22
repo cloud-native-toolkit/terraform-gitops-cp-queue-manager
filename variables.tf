@@ -122,9 +122,9 @@ variable "cpurequests" {
   default     = "500m"
 }
 
-variable "storageclass" {
+variable "storageClass" {
   type        = string
-  description = "CPU requests for the queue manager instance"
+  description = "Storage class to be used for Qmgr"
   default     = "portworx-db2-rwo-sc"
 }
 

@@ -102,3 +102,9 @@ variable "config_map" {
   description = "Name of config map to created"
   default =  "oms-queue-config"
 }
+
+variable "storageClass" {
+  type        = string
+  description = "Storage class to be used for Qmgr"
+  default     = "portworx-db2-rwo-sc"
+}

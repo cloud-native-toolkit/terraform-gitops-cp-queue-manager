@@ -7,6 +7,10 @@ mqinstance:
       license: L-RJON-C7QG3S
       use: NonProduction
     queueManager:
+      storage:
+        queueManager:
+          type: persistent-claim
+        defaultClass: portworx-db2-rwo-sc
       name: QM1
       mqsc:
         - configMap:

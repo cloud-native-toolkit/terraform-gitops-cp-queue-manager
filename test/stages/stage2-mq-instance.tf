@@ -1,4 +1,4 @@
-module "mq_instance" {
+module "gitops_module" {
   source = "./module"
 
   depends_on = [

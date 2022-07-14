@@ -6,8 +6,7 @@ tags:
   - gitops
   - ibm
   - cloud pak
-  - operator
-  - ace
+  - queue manager
 versions:
   - platforms:
       - ocp4

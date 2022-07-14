@@ -5,7 +5,7 @@ locals {
   instance_chart_dir = "${path.module}/charts/ibm-mq-instance"
   instance_yaml_dir  = "${path.cwd}/.tmp/${local.instance_name}/chart/${local.instance_name}"
   layer              = "services"
-  type               = "base"
+  type               = "instances"
   application_branch = "main"
   layer_config       = var.gitops_config[local.layer]
   #values_file = "values-${var.server_name}.yaml"

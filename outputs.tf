@@ -20,7 +20,7 @@ output "config_map" {
 
 output "name" {
   description = "The name of the module"
-  value       = local.name
+  value       = local.instance_name
   depends_on  = [gitops_module.module]
 }
 
@@ -32,7 +32,7 @@ output "branch" {
 
 output "namespace" {
   description = "The namespace where the module will be deployed"
-  value       = local.namespace
+  value       = var.namespace
   depends_on  = [gitops_module.module]
 }
 

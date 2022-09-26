@@ -105,7 +105,7 @@ resource gitops_module module {
 
 
   name = local.instance_name
-  namespace = local.namespace
+  namespace = var.namespace
   content_dir = local.instance_yaml_dir
   server_name = var.server_name
   layer = local.layer

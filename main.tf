@@ -1,7 +1,6 @@
 locals {
   base_name          = "ibm-mq"
   instance_name      = "${local.base_name}-instance"
-  bin_dir            = module.setup_clis.bin_dir
   instance_chart_dir = "${path.module}/charts/ibm-mq-instance"
   instance_yaml_dir  = "${path.cwd}/.tmp/${local.instance_name}/chart/${local.instance_name}"
   layer              = "services"
@@ -69,9 +68,6 @@ locals {
     }
   }
 }
-  module setup_clis {
-    source = "github.com/cloud-native-toolkit/terraform-util-clis.git"
-  }
 
 
   module pull_secret {
@@ -100,7 +96,7 @@ locals {
   }
 
 
-resource gitops_module module {
+resource gitops_module setup_gitops {
   depends_on = [null_resource.create_instance_yaml]
 
 

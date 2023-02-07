@@ -34,6 +34,10 @@ versions:
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-cp-mq.git
             version: ">= 1.0.0"
+      - id: storage
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-util-storage-class-manager.git
+            version: ">= 1.0.0"
     variables:
       - name: gitops_config
         moduleRef:
@@ -71,3 +75,7 @@ versions:
         moduleRef:
           id: dep-manager
           output: mq.license
+      - name: storageClass
+        moduleRef:
+          id: storage
+          output: block_storage_class

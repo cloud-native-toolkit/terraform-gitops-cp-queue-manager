@@ -19,7 +19,7 @@ module "mq_instance" {
   config_map = var.config_map
 
   # Parameter specific to mq-instance
-  storageClass = "ibmc-vpc-block-10iops-tier"
+  storageClass = module.storage.block_storage_class
 
   # Pulling variables from CP4I dependency management
   mq_version  = module.cp4i-dependencies.mq.version
